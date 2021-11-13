@@ -7,6 +7,7 @@ const {
   notFoundErrorHandler,
   generalErrorHandler,
 } = require("./middlewares/error");
+const usersRoutes = require("./routes/usersRoutes");
 
 const app = express();
 
@@ -34,6 +35,8 @@ const initializeServer = (port) =>
       debug(chalk.yellow("Server express disconnected"));
     });
   });
+
+app.use("/users", usersRoutes);
 
 app.use(notFoundErrorHandler);
 app.use(generalErrorHandler);
