@@ -25,7 +25,7 @@ describe("Given a generalErrorHandler function", () => {
   describe("When it receives an error", () => {
     test("Then it should invoke the method json with the error message and the method status with 500", () => {
       const errorCode = 500;
-      const errorMessage = "General pete";
+      const errorMessage = "General error";
       const error = {
         error: errorMessage,
       };
