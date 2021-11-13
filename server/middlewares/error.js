@@ -1,6 +1,6 @@
 const { ValidationError } = require("express-validation");
 
-const debug = require("debug")("series:errors");
+const debug = require("debug")("network:errors");
 
 const notFoundErrorHandler = (req, res) => {
   res.status(404).json({ error: "Endpoint not found" });
@@ -12,7 +12,7 @@ const generalErrorHandler = (error, req, res, next) => {
   if (error instanceof ValidationError) {
     return res.status(error.statusCode).json(error);
   }
-  const message = error.code ? error.message : "General pete";
+  const message = error.code ? error.message : "General error";
   res.status(error.code || 500).json({ error: message });
 };
 
