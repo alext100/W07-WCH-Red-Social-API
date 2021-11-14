@@ -5,6 +5,8 @@ const registerRequestSchema = {
     name: Joi.string().required(),
     username: Joi.string().required(),
     password: Joi.string().required(),
+    age: Joi.number(),
+    image: Joi.string(),
   }),
 };
 

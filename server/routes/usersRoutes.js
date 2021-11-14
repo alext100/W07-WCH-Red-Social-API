@@ -5,7 +5,7 @@ const {
   registerRequestSchema,
 } = require("../requestSchemas/registerRequestSchema");
 const createUser = require("../middlewares/createUser");
-const loginUser = require("../controller/userController");
+const loginUser = require("../controller/loginUser");
 
 const router = express.Router();
 
