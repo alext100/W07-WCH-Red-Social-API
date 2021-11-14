@@ -67,13 +67,13 @@ describe("Given a /register endpoint", () => {
     });
   });
   describe("When a POST request arrives with the right parameters", () => {
-    test("Then it should respond with a 200", async () => {
+    test("Then it should respond with a 201", async () => {
       const user = {
         name: "pablo",
         username: "pablo",
         password: await bcrypt.hash("qwerty123", 10),
       };
-      await request.post("/users/register").send(user).expect(200);
+      await request.post("/users/register").send(user).expect(201);
     });
   });
 });
