@@ -1,8 +1,25 @@
 const User = require("../../database/models/user");
 
 const getUsers = async (req, res) => {
-  const pets = await User.find();
-  res.json(pets);
+  const users = await User.find();
+  res.json(users);
+};
+
+const getUserById = async (req, res, next) => {
+  const { id } = req.params;
+  try {
+    const searchedUser = await User.find({ _id: id, user: req.userId });
+    if (searchedUser) {
+      res.json(searchedUser);
+    } else {
+      const error = new Error("User not found");
+      error.code = 404;
+      next(error);
+    }
+  } catch (error) {
+    error.code = 400;
+    next(error);
+  }
 };
 
 const updateUser = async (req, res, next) => {
@@ -43,4 +60,4 @@ const deleteUser = async (req, res, next) => {
   }
 };
 
-module.exports = { getUsers, updateUser, deleteUser };
+module.exports = { getUsers, updateUser, deleteUser, getUserById };
